@@ -63,7 +63,7 @@ $ asciinema rec -t "Yarn Dependency Issue" -c ./runner-yarn-issue yarn-issue-dem
 
 ### With a Fresh User
 
-[![asciicast](https://asciinema.org/a/jy6qA1Q1I8cUmQAhjde1uss2Q.png)](https://asciinema.org/a/jy6qA1Q1I8cUmQAhjde1uss2Q)
+[![asciicast](https://asciinema.org/a/155214.png)](https://asciinema.org/a/155214)
 
 ```sh-session
 $ cd npm-small
@@ -90,7 +90,7 @@ Done in 105.43s.
 
 ### With Me
 
-[![asciicast](https://asciinema.org/a/2jRaoMAG7ZncFuwEg8TUkpZ0p.png)](https://asciinema.org/a/2jRaoMAG7ZncFuwEg8TUkpZ0p)
+[![asciicast](https://asciinema.org/a/155210.png)](https://asciinema.org/a/155210)
 
 ```sh-session
 $ cd npm-small

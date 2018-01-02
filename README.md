@@ -65,6 +65,8 @@ $ asciinema rec -t "Yarn Dependency Issue" -c ./runner-yarn-issue yarn-issue-dem
 
 [![asciicast](https://asciinema.org/a/155214.png)](https://asciinema.org/a/155214)
 
+[Full cast](https://asciinema.org/a/155214)
+
 ```sh-session
 $ cd npm-small
 $ npm install moment
@@ -91,6 +93,8 @@ Done in 105.43s.
 ### With Me
 
 [![asciicast](https://asciinema.org/a/155210.png)](https://asciinema.org/a/155210)
+
+[Full cast](https://asciinema.org/a/155210)
 
 ```sh-session
 $ cd npm-small

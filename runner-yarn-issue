@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+function pretty_print_then_eval {
+	echo -e "\n $(tput setab 0; tput setaf 4)user$(tput setaf 1)@$(tput setaf 2)machine $(tput setab 4; tput setaf 0)\xEE\x82\xB0 $PWD $(tput setab 0; tput setaf 4)\xEE\x82\xB0 \n ❯$(tput sgr0) $1"
+	eval $1
+}
+
+function call_exa {
+	# You could use something like this for similar, vanilla input
+    # ls -alh
+    # but it's not quite the same
+	pretty_print_then_eval "exa --all --long --header --blocks --links --group-directories-first --group --git --time-style long-iso --color always --color-scale $1"
+}
+
+function mkdir_cd {
+	 pretty_print_then_eval "mkdir $1 && cd $1"
+}
+
+cd /tmp
+DEMO_ROOT="$(mktemp -p /tmp -d yarn-issue-XXX)"
+MANAGERS=(npm yarn)
+declare -A MANAGER_INSTALL
+MANAGER_INSTALL=([npm]='install' [yarn]='add --cache-folder=../yarn-cache')
+META=('small;moment;fs-extra' 'large;@angular/cli;fs-extra')
+# META=('small;moment;fs-extra')
+
+pretty_print_then_eval "cd $DEMO_ROOT"
+pretty_print_then_eval "npm cache clean --force"
+pretty_print_then_eval "mkdir yarn-cache"
+call_exa
+
+for meta_string in "${META[@]}"; do
+	PACKAGE_INFO=(${meta_string//;/ })
+	PACKAGE_SIZE="${PACKAGE_INFO[0]}"
+	unset PACKAGE_INFO[0]
+	for manager in "${MANAGERS[@]}"; do
+		mkdir_cd "$manager-$PACKAGE_SIZE"
+		for package in "${PACKAGE_INFO[@]}"; do
+			pretty_print_then_eval "$manager ${MANAGER_INSTALL[$manager]} $package"
+		done
+		pretty_print_then_eval "cd .."
+	done
+	call_exa "--tree --level=3"
+done
+
+pretty_print_then_eval "cd /tmp"
+pretty_print_then_eval "rm -rf $DEMO_ROOT"

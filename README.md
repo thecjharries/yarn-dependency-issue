@@ -118,3 +118,51 @@ Done in 207.14s.
 $ yarn add --cache-folder=../yarn-cache fs-extra
 Done in 105.35s.
 ```
+
+## Update
+
+I've run this again on a fresh install of Fedora 27.
+
+### Versions
+
+```sh-session
+$ yarn -v
+1.3.2
+$ node -v
+v9.3.0
+$ cat /etc/fedora-release
+Fedora release 27 (Twenty Seven)
+$ bash --version
+GNU bash, version 4.4.12(1)-release (x86_64-redhat-linux-gnu)
+$ asciinema --version
+asciinema 1.4.0
+```
+
+### With Me
+
+[![asciicast](https://asciinema.org/a/155822.png)](https://asciinema.org/a/155822)
+
+[Full cast](https://asciinema.org/a/155822)
+
+```sh-session
+$ cd npm-small
+$ npm install moment
+added 1 package in 0.759s
+$ npm install fs-extra
+added 4 packages in 0.788s
+$ cd yarn-small
+$ yarn add --cache-folder=../yarn-cache moment
+Done in 0.85s.
+$ yarn add --cache-folder=../yarn-cache fs-extra
+Done in 0.91s.
+$ cd npm-large
+$ npm install @angular/cli
+added 994 packages in 37.08s
+$ npm install fs-extra
+added 116 packages and updated 1 package in 4.032s
+$ cd yarn-large
+$ yarn add --cache-folder=../yarn-cache @angular/cli
+Done in 24.04s.
+$ yarn add --cache-folder=../yarn-cache fs-extra
+Done in 2.60s.
+```
